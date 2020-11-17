@@ -87,6 +87,39 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+#background_blot {
+  animation-delay: 4.5s;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-name: background_blot;
+  opacity: 0;
+  right: -20px;
+  top: 0;
+}
+
+.blot {
+  opacity: 0;
+  position: fixed;
+}
+
+#blot {
+  animation-delay: 5s;
+  animation-duration: 100s;
+  animation-fill-mode: forwards;
+  animation-name: blot;
+  right: -200px;
+  top: -75px;
+}
+
+#background_blot, 
+.first-letter, 
+.first-letter::after, 
+h2,
+li,
+#main-list {
+  animation-play-state: inherit;
+}
+
 @font-face {
   font-family: Gasoline; 
   src: url(../fonts/gasoline_scratchy.otf); 
@@ -97,7 +130,6 @@ textarea {
   animation-duration: 1s;
   animation-fill-mode: forwards;
   animation-name: new_rank;
-  animation-play-state: inherit;
   display: inline-block;
   font-size: 2em;
   line-height: 1;
@@ -109,8 +141,7 @@ textarea {
   animation-duration: 2.5s;
   animation-fill-mode: forwards;
   animation-name: filling_rank;
-  animation-play-state: inherit;
-  color: black;
+  color: darkgray;
   content: attr(data);
   left: -3px;
   overflow-y: hidden;
@@ -119,13 +150,40 @@ textarea {
 }
 
 h2 {
-  animation-play-state: paused;
   color: lightgray;
   direction: rtl;
   display: inline;
   margin: 0;
   text-transform: uppercase;
   white-space: nowrap;
+}
+
+body {
+  animation-play-state: paused;
+}
+
+@keyframes background_blot {
+  0% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.8;    
+    right: 0;
+  }
+}
+
+@keyframes blot {
+  0% {
+    opacity: 1;
+    transform: scale(0.5) translateX(50%);
+  }
+  0.1% {
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;    
+    transform: scale(0.8) rotateZ(-30deg);
+  }
 }
 
 @keyframes filling_rank {

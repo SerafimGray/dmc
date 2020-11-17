@@ -20,7 +20,7 @@ function countPlaybackRate(from, to, t) {
 }
 
 function runAnimation() {
-    document.querySelector('h2').classList.add('run_animation')
+    document.getElementsByTagName('body')[0].classList.add('run_animation')
 }
 
 function setPlaybackRate(playbackRate) {
