@@ -88,13 +88,13 @@ textarea {
    ========================================================================== */
 
 #background_blot {
-  animation-delay: 4.5s;
+  animation-delay: 4s;
   animation-duration: 1s;
   animation-fill-mode: forwards;
   animation-name: background_blot;
   opacity: 0;
   right: -20px;
-  top: 0;
+  top: -15px;
 }
 
 .blot {
@@ -103,12 +103,12 @@ textarea {
 }
 
 #blot {
-  animation-delay: 5s;
+  animation-delay: 4.5s;
   animation-duration: 100s;
   animation-fill-mode: forwards;
   animation-name: blot;
   right: -200px;
-  top: -75px;
+  top: -100px;
 }
 
 #background_blot, 
@@ -116,13 +116,15 @@ textarea {
 .first-letter::after, 
 h2,
 li,
-#main-list {
+#main-list, 
+.not_first-letter,
+.subtitle {
   animation-play-state: inherit;
 }
 
 @font-face {
-  font-family: Gasoline; 
-  src: url(../fonts/gasoline_scratchy.otf); 
+  font-family: 'New Press Eroded'; 
+  src: url(../fonts/new_press_eroded.ttf); 
 }
 
 .first-letter {
@@ -133,7 +135,7 @@ li,
   display: inline-block;
   font-size: 2em;
   line-height: 1;
-  transform: translate(0.14em, 0.25em);
+  transform: translate(0.1em, 0.25em);
 }
 
 .first-letter::after {
@@ -150,11 +152,10 @@ li,
 }
 
 h2 {
-  color: lightgray;
-  direction: rtl;
   display: inline;
+  font-size: 1.25em;
+  font-weight: normal;
   margin: 0;
-  text-transform: uppercase;
   white-space: nowrap;
 }
 
@@ -175,14 +176,14 @@ body {
 @keyframes blot {
   0% {
     opacity: 1;
-    transform: scale(0.5) translateX(50%);
+    transform: scale(0.3) translateX(50%);
   }
   0.1% {
-    transform: scale(0.8);
+    transform: scale(0.6);
   }
   100% {
     opacity: 1;    
-    transform: scale(0.8) rotateZ(-30deg);
+    transform: scale(0.6) rotateZ(-30deg);
   }
 }
 
@@ -197,8 +198,7 @@ body {
 
 @keyframes new_rank {
   0% {
-    font-size: 6em;
-    transform: translate(0, -30%);
+    transform: scale(3);
   }
 }
 
@@ -212,30 +212,63 @@ body {
   }
 }
 
+@keyframes subtitle {
+  0% {
+    opacity: 1;
+    transform: scale(2) translateX(-25%);
+  }
+  66% {
+    text-shadow: 2px 0 red;
+  }
+  77% {
+    text-shadow: 4px -4px red;
+  }
+  88% {
+    text-shadow: -2px 0 red;
+  }
+  100% {
+    opacity: 1;
+    text-shadow: none;
+  }
+}
+
 .not_first-letter {
-  animation-delay: 4.5s;
-  animation-duration: 1s;
+  animation-delay: 4.25s;
+  animation-duration: 0.75s;
   animation-fill-mode: forwards;
   animation-name: show_rank_name;
-  animation-play-state: inherit;
   letter-spacing: -0.3em;
   opacity: 0;
 }
 
 li {
-  font-family: Gasoline;
   font-size: 3rem;
-  list-style: none;
 }
 
 #main-list {
+  color: lightgray;
+  font-family: 'New Press Eroded';
+  list-style: none;
   position: fixed;
   right: 50px;
+  text-align: right;
+  text-transform: uppercase;
   transform: rotateZ(-3deg);
 }
 
 .run_animation {
   animation-play-state: running;
+}
+
+.subtitle {
+  animation-delay: 4.25s;
+  animation-duration: 0.75s;
+  animation-fill-mode: forwards;
+  animation-name: subtitle;
+  font-size: 1.25em;
+  margin-top: -37px;
+  opacity: 0;
+  text-shadow: 2px 0 red;
 }
 
 video {

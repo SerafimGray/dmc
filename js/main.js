@@ -7,10 +7,10 @@ window.onload = function () {
     }
 }
 
-function clearIntervalCheck(intervalID, t, to) {
+function clearIntervalCheck(intervalID, t) {
     if (t > 1) {
         window.clearInterval(intervalID)
-        setPlaybackRate(to)
+        setPlaybackRate(0)
     }
 }
 
@@ -51,7 +51,7 @@ function translatePlaybackRate(from, to, period, interval) {
         const playbackRate = countPlaybackRate(from, to, t)
         setPlaybackRate(playbackRate)
         t += step
-        clearIntervalCheck(intervalID, t, to)
+        clearIntervalCheck(intervalID, t)
     }, interval);
 }
 
