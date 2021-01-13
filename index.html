@@ -1,11 +1,11 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="en">
 
 <head>
   <meta charset="utf-8">
-  <title></title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DmC demo website</title>
+  <meta name="description" content="DmC: Devil May Cry videogame demo website">
+  <meta name="viewport" content="width=device-width, initial-scale=0.6">
 
   <meta property="og:title" content="">
   <meta property="og:type" content="">
@@ -23,43 +23,54 @@
 </head>
 
 <body>
-  <video 
-    autoplay  
-    loop 
-    muted
-    poster="img/poster.jpg" 
-  >
+  <video autoplay loop muted poster="img/poster.jpg">
     <source src="video/background-3.mp4">
   </video>
+  <div id="video_shadow"></div>
 
-  <img 
-    alt="translucent blot under the text"
-    class="blot"
-    id="background_blot"
-    src="img/background_blot.png"  
-  >
+  <img alt="translucent blot under the text" class="blot" id="background_blot" src="img/background_blot.png">
 
-  <img 
-    alt="large blot under the text"
-    class="blot"
-    id="blot"
-    src="img/blot.gif"  
-  >
+  <img alt="large blot under the text" class="blot" id="blot" src="img/blot.gif">
 
   <ul id="main-list">
     <li>
-      <h2>
-        <span class="first-letter" data="O">O</span>
-        <span class="not_first-letter">ptimized</span>
-      </h2>
-      <p class="subtitle">x3</p>
+      <div class="rotator">
+        <h2>
+          <span class="first-letter" data="P">P</span>
+          <span class="not_first-letter">erformant</span>
+        </h2>
+        <p class="subtitle">ms</p>
+      </div>
+      <p class="total_measure">
+        <span class="total_measure_value">1,062</span>
+        <span class="total_measure_description">load time</span>
+      </p>
 
-      <ul>
-        <li></li>
-      </ul>
+      <table>
+        <tr>
+          <td>First Contentful Paint</td>
+          <td>300</td>
+        </tr>
+        <tr>
+          <td>Speed Index</td>
+          <td>800</td>
+        </tr>
+        <tr>
+          <td>Largest Contentful Paint</td>
+          <td>1,100</td>
+        </tr>
+        <tr>
+          <td>Time to Interactive</td>
+          <td>400</td>
+        </tr>
+        <tr>
+          <td>Total Blocking Time</td>
+          <td>50</td>
+        </tr>
+      </table>
     </li>
   </ul>
-  
+
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>
   <script src="js/plugins.js"></script>
   <script src="js/main.js"></script>

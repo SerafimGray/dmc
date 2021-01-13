@@ -90,25 +90,9 @@ textarea {
 #background_blot {
   animation-delay: 4s;
   animation-duration: 1s;
-  animation-fill-mode: forwards;
   animation-name: background_blot;
-  opacity: 0;
-  right: -20px;
-  top: -15px;
-}
-
-.blot {
-  opacity: 0;
-  position: fixed;
-}
-
-#blot {
-  animation-delay: 4.5s;
-  animation-duration: 100s;
-  animation-fill-mode: forwards;
-  animation-name: blot;
-  right: -200px;
-  top: -100px;
+  right: calc(-20px * var(--scale-factor));
+  top: calc(-15px * var(--scale-factor));
 }
 
 #background_blot, 
@@ -118,19 +102,57 @@ h2,
 li,
 #main-list, 
 .not_first-letter,
-.subtitle {
+.subtitle,
+.total_measure_description,
+.total_measure_value {
   animation-play-state: inherit;
 }
 
+.blot {
+  position: fixed;
+}
+
+.blot,
+.first-letter,
+.first-letter::after,
+.not_first-letter,
+.subtitle,
+.total_measure_description,
+.total_measure_value,
+tr {
+  animation-fill-mode: forwards;
+}
+
+.blot,
+.not_first-letter,
+.subtitle,
+.total_measure_description,
+.total_measure_value,
+tr {
+  opacity: 0;
+}
+
+#blot {
+  animation-delay: 4.5s;
+  animation-duration: 100s;
+  animation-name: blot;
+  right: -200px;
+  top: -100px;
+}
+
+body {
+  animation-play-state: paused;
+}
+
 @font-face {
+  font-display: swap;
   font-family: 'New Press Eroded'; 
-  src: url(../fonts/new_press_eroded.ttf); 
+  src: url(../fonts/new_press_eroded.ttf) format("truetype"); 
 }
 
 .first-letter {
   animation-delay: 3.5s;
   animation-duration: 1s;
-  animation-fill-mode: forwards;
   animation-name: new_rank;
   display: inline-block;
   font-size: 2em;
@@ -139,9 +161,7 @@ li,
 }
 
 .first-letter::after {
-  animation-delay: 1s;
   animation-duration: 2.5s;
-  animation-fill-mode: forwards;
   animation-name: filling_rank;
   color: darkgray;
   content: attr(data);
@@ -151,16 +171,18 @@ li,
   position: absolute;
 }
 
+.first-letter::after,
+.total_measure_description,
+.total_measure_value {
+  animation-delay: 1s;
+}
+
 h2 {
   display: inline;
   font-size: 1.25em;
   font-weight: normal;
   margin: 0;
   white-space: nowrap;
-}
-
-body {
-  animation-play-state: paused;
 }
 
 @keyframes background_blot {
@@ -176,14 +198,14 @@ body {
 @keyframes blot {
   0% {
     opacity: 1;
-    transform: scale(0.3) translateX(50%);
+    transform: scale(calc(0.3 * var(--scale-factor))) translateX(50%);
   }
   0.1% {
-    transform: scale(0.6);
+    transform: scale(calc(0.6 * var(--scale-factor)));
   }
   100% {
     opacity: 1;    
-    transform: scale(0.6) rotateZ(-30deg);
+    transform: scale(calc(0.6 * var(--scale-factor))) rotateZ(-30deg);
   }
 }
 
@@ -218,27 +240,66 @@ body {
     transform: scale(2) translateX(-25%);
   }
   66% {
-    text-shadow: 2px 0 red;
+    text-shadow: 2px 0 red, 0 0 10px black;
   }
   77% {
-    text-shadow: 4px -4px red;
+    text-shadow: 4px -4px red, 0 0 10px black;
   }
   88% {
-    text-shadow: -2px 0 red;
+    text-shadow: -2px 0 red, 0 0 10px black;
   }
   100% {
     opacity: 1;
-    text-shadow: none;
+    text-shadow: 0 0 10px black;
+  }
+}
+
+@keyframes total_measure {
+  0% {opacity: 1;}
+  6% {
+    text-shadow: -0.5em 0.5em red, -0.25em 0.25em violet, 0 0 10px black;
+    transform: translate(0.25em, -0.25em);
+  }
+  12% {
+    text-shadow: 0 0 10px black;
+    transform: none;
+  }
+  100% {opacity: 1;}
+}
+
+@keyframes total_measure_description {
+  0% {opacity: 1;}
+  6% {
+    transform: scale(1.25);
+  }
+  12% {
+    transform: none;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes tr {
+  0% {
+    line-height: 0.6em;
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    line-height: 0.6em;
+    opacity: 1;
+    transform: none;
   }
 }
 
 .not_first-letter {
   animation-delay: 4.25s;
   animation-duration: 0.75s;
-  animation-fill-mode: forwards;
   animation-name: show_rank_name;
   letter-spacing: -0.3em;
-  opacity: 0;
 }
 
 li {
@@ -246,13 +307,25 @@ li {
 }
 
 #main-list {
-  color: lightgray;
-  font-family: 'New Press Eroded';
+  color: white;
+  font-family: 'New Press Eroded', fantasy;
   list-style: none;
+  margin: 0;
+  padding-right: 50px;
+  padding-top: 16px;
   position: fixed;
-  right: 50px;
+  right: 0;
   text-align: right;
+  text-shadow: 0 0 10px black;
   text-transform: uppercase;
+  /*transform: scale(var(--scale-factor)) translate(calc(100% * var(--scale-factor)), calc(-100% * var(--scale-factor)));*/
+}
+
+:root {
+  --scale-factor: 1
+}
+
+.rotator {
   transform: rotateZ(-3deg);
 }
 
@@ -263,12 +336,68 @@ li {
 .subtitle {
   animation-delay: 4.25s;
   animation-duration: 0.75s;
-  animation-fill-mode: forwards;
   animation-name: subtitle;
   font-size: 1.25em;
+  margin-bottom: 0;
   margin-top: -37px;
-  opacity: 0;
   text-shadow: 2px 0 red;
+}
+
+td {
+  font-size: 0.6em;
+}
+
+td:first-of-type {
+  padding-right: 30px;
+}
+
+.total_measure {
+  font-size: 0.5em;
+  margin: 0 0 30px;
+}
+
+.total_measure_description {
+  animation-duration: 1125ms;
+  animation-iteration-count: 3;
+  animation-name: total_measure_description;
+  display: block;
+  transform-origin: top right;
+}
+
+.total_measure_value {
+  animation-duration: 1125ms;
+  animation-iteration-count: 3;
+  animation-name: total_measure;
+  font-size: 1.5em;
+  display: block;
+  line-height: 1em;
+}
+
+tr {
+  animation-duration: 135ms;
+  animation-name: tr;
+  line-height: 0;
+  transform-origin: top right;
+}
+
+tr:nth-of-type(1) {
+  animation-delay: 4000ms;
+}
+
+tr:nth-of-type(2) {
+  animation-delay: 3300ms;
+}
+
+tr:nth-of-type(3) {
+  animation-delay: 2600ms;
+}
+
+tr:nth-of-type(4) {
+  animation-delay: 1900ms;
+}
+
+tr:nth-of-type(5) {
+  animation-delay: 1200ms;
 }
 
 video {
@@ -276,8 +405,17 @@ video {
   min-height: 100%;
   min-width: 100%;
   position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#video_shadow {
+  background-image: radial-gradient(500px 800px at top right, maroon 50%, transparent);
+  height: 100%;
+  left: 0;
+  position: absolute;
   top: 0;
-  transform: translate(-50%);
+  width: 100%;
 }
 
 /* ==========================================================================
