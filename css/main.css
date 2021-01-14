@@ -87,105 +87,9 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-#background_blot {
-  animation-delay: 4s;
-  animation-duration: 1s;
-  animation-name: background_blot;
-  right: calc(-20px * var(--scale-factor));
-  top: calc(-15px * var(--scale-factor));
-}
+/* =============================== Animations =============================== */
 
-#background_blot, 
-.first-letter, 
-.first-letter::after, 
-h2,
-li,
-#main-list, 
-.not_first-letter,
-.subtitle,
-.total_measure_description,
-.total_measure_value {
-  animation-play-state: inherit;
-}
-
-.blot {
-  position: fixed;
-}
-
-.blot,
-.first-letter,
-.first-letter::after,
-.not_first-letter,
-.subtitle,
-.total_measure_description,
-.total_measure_value,
-tr {
-  animation-fill-mode: forwards;
-}
-
-.blot,
-.not_first-letter,
-.subtitle,
-.total_measure_description,
-.total_measure_value,
-tr {
-  opacity: 0;
-}
-
-#blot {
-  animation-delay: 4.5s;
-  animation-duration: 100s;
-  animation-name: blot;
-  right: -200px;
-  top: -100px;
-}
-
-body {
-  animation-play-state: paused;
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'New Press Eroded'; 
-  src: url(../fonts/new_press_eroded.ttf) format("truetype"); 
-}
-
-.first-letter {
-  animation-delay: 3.5s;
-  animation-duration: 1s;
-  animation-name: new_rank;
-  display: inline-block;
-  font-size: 2em;
-  line-height: 1;
-  transform: translate(0.1em, 0.25em);
-}
-
-.first-letter::after {
-  animation-duration: 2.5s;
-  animation-name: filling_rank;
-  color: darkgray;
-  content: attr(data);
-  left: -3px;
-  overflow-y: hidden;
-  padding-left: 3px;
-  position: absolute;
-}
-
-.first-letter::after,
-.total_measure_description,
-.total_measure_value {
-  animation-delay: 1s;
-}
-
-h2 {
-  display: inline;
-  font-size: 1.25em;
-  font-weight: normal;
-  margin: 0;
-  white-space: nowrap;
-}
-
-@keyframes background_blot {
+@keyframes background-blot {
   0% {
     opacity: 0.8;
   }
@@ -195,21 +99,55 @@ h2 {
   }
 }
 
-@keyframes blot {
+@keyframes background-blot_onscroll {
   0% {
-    opacity: 1;
-    transform: scale(calc(0.3 * var(--scale-factor))) translateX(50%);
-  }
-  0.1% {
-    transform: scale(calc(0.6 * var(--scale-factor)));
+    opacity: 0.8;
+    right: 0;
   }
   100% {
-    opacity: 1;    
-    transform: scale(calc(0.6 * var(--scale-factor))) rotateZ(-30deg);
+    opacity: 0;    
+    right: -20px;
   }
 }
 
-@keyframes filling_rank {
+@keyframes blot {
+  0% {
+    opacity: 1;
+    transform: scale(0.3) translateX(50%);
+  }
+  0.1% {
+    transform: scale(0.6);
+  }
+  100% {
+    opacity: 1;    
+    transform: scale(0.6) rotateZ(-30deg);
+  }
+}
+
+@keyframes blot_onscroll {
+  0% {
+    opacity: 1;
+    transform: scale(0.6) translateX(0);
+  }
+  100% {
+    opacity: 0;    
+    transform: scale(0.6) translateX(50%);
+  }
+}
+
+@keyframes fade-away_onscroll {
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes first-letter {
+  0% {
+    transform: scale(3);
+  }
+}
+
+@keyframes first-letter_after {
   0% {height: 1em;}
   10% {height: 0.6em;}
   45% {height: 0.7em;}
@@ -218,19 +156,24 @@ h2 {
   100% {height: 0em;}
 }
 
-@keyframes new_rank {
-  0% {
-    transform: scale(3);
-  }
-}
-
-@keyframes show_rank_name {
+@keyframes not_first-letter {
   0% {
     opacity: 1;
   }
   100% {
     letter-spacing: normal;
     opacity: 1;
+  }
+}
+
+@keyframes not_first-letter_onscroll {
+  0% {
+    letter-spacing: normal;
+    opacity: 1;
+  }
+  100% {
+    letter-spacing: -0.3em;
+    opacity: 0;
   }
 }
 
@@ -254,8 +197,10 @@ h2 {
   }
 }
 
-@keyframes total_measure {
-  0% {opacity: 1;}
+@keyframes total-measure {
+  0% {
+    opacity: 1;
+  }
   6% {
     text-shadow: -0.5em 0.5em red, -0.25em 0.25em violet, 0 0 10px black;
     transform: translate(0.25em, -0.25em);
@@ -264,11 +209,15 @@ h2 {
     text-shadow: 0 0 10px black;
     transform: none;
   }
-  100% {opacity: 1;}
+  100% {
+    opacity: 1;
+  }
 }
 
-@keyframes total_measure_description {
-  0% {opacity: 1;}
+@keyframes total-measure_description {
+  0% {
+    opacity: 1;
+  }
   6% {
     transform: scale(1.25);
   }
@@ -295,10 +244,125 @@ h2 {
   }
 }
 
+@keyframes tr_onscroll {
+  100% {
+    opacity: 0;
+    transform: translateY(200%);
+  }
+}
+
+/* ============================== Group Styles ============================== */
+
+#background-blot, 
+.blot,
+.first-letter, 
+.first-letter::after, 
+h2,
+#main-list, 
+.not_first-letter,
+.rotator,
+.subtitle,
+table,
+tbody,
+.total-measure,
+.total-measure_description,
+.total-measure_value,
+tr,
+#visible {
+  animation-play-state: inherit;
+}
+
+.blot,
+.first-letter,
+.first-letter::after,
+.not_first-letter,
+.subtitle,
+.total-measure_description,
+.total-measure_value,
+tr {
+  animation-fill-mode: forwards;
+}
+
+.blot,
+.not_first-letter,
+.subtitle,
+.total-measure_description,
+.total-measure_value,
+tr {
+  opacity: 0;
+}
+
+.first-letter::after,
+.total-measure_description,
+.total-measure_value {
+  animation-delay: 1s;
+}
+
+/* ==============================  ============================== */
+
+#background-blot {
+  animation-delay: 4s;
+  animation-duration: 1s;
+  animation-name: background-blot;
+  right: -20px;
+  top: -15px;
+}
+
+.blot {
+  position: fixed;
+}
+
+#blot {
+  animation-delay: 4.5s;
+  animation-duration: 100s;
+  animation-name: blot;
+  right: -200px;
+  top: -100px;
+}
+
+body {
+  animation-play-state: paused;
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'New Press Eroded'; 
+  src: url(../fonts/new_press_eroded.ttf) format("truetype"); 
+}
+
+.first-letter {
+  animation-delay: 3.5s;
+  animation-duration: 1s;
+  animation-name: first-letter;
+  display: inline-block;
+  font-size: 2em;
+  line-height: 1;
+  transform: translate(0.1em, 0.25em);
+}
+
+.first-letter::after {
+  animation-duration: 2.5s;
+  animation-name: first-letter_after;
+  color: darkgray;
+  content: attr(data);
+  left: -3px;
+  overflow-y: hidden;
+  padding-left: 3px;
+  position: absolute;
+}
+
+h2 {
+  display: inline;
+  font-size: 1.25em;
+  font-weight: normal;
+  margin: 0;
+  white-space: nowrap;
+}
+
 .not_first-letter {
   animation-delay: 4.25s;
   animation-duration: 0.75s;
-  animation-name: show_rank_name;
+  animation-name: not_first-letter;
   letter-spacing: -0.3em;
 }
 
@@ -318,11 +382,89 @@ li {
   text-align: right;
   text-shadow: 0 0 10px black;
   text-transform: uppercase;
-  /*transform: scale(var(--scale-factor)) translate(calc(100% * var(--scale-factor)), calc(-100% * var(--scale-factor)));*/
+  top: 0;
 }
 
-:root {
-  --scale-factor: 1
+#main-list > li:not(#visible) {
+  animation-play-state: paused;
+  display: none;
+}
+
+.onscroll#background-blot,
+.onscroll#blot,
+.onscroll.not_first-letter,
+.onscroll.subtitle,
+.onscroll.total-measure_description {
+  animation-delay: 0s;
+}
+
+.onscroll.first-letter,
+.onscroll.total-measure_value {
+  animation-delay: 750ms;
+}
+
+.onscroll#blot,
+.onscroll.first-letter,
+.onscroll.total-measure_description,
+.onscroll.total-measure_value {
+  animation-duration: 100ms;
+}
+
+.onscroll.first-letter,
+.onscroll.subtitle,
+.onscroll.total-measure_description,
+.onscroll.total-measure_value {
+  animation-name: fade-away_onscroll;
+}
+
+.onscroll.subtitle,
+.onscroll.total-measure_description,
+.onscroll.total-measure_value,
+.onscroll.results tr {
+  opacity: 1;
+}
+
+.onscroll.total-measure_description,
+.onscroll.total-measure_value {
+  animation-iteration-count: 1;
+}
+
+.onscroll#background-blot {
+  animation-duration: 200ms;
+  animation-name: background-blot_onscroll;
+}
+
+.onscroll#blot {
+  animation-name: blot_onscroll;
+}
+
+.onscroll.not_first-letter {
+  animation-name: not_first-letter_onscroll;
+}
+
+.onscroll.results tr {
+  animation-name: tr_onscroll;
+  line-height: 0.6em;
+}
+
+.onscroll.results tr:nth-of-type(1) {
+  animation-delay: 400ms;
+}
+
+.onscroll.results tr:nth-of-type(2) {
+  animation-delay: 300ms;
+}
+
+.onscroll.results tr:nth-of-type(3) {
+  animation-delay: 200ms;
+}
+
+.onscroll.results tr:nth-of-type(4) {
+  animation-delay: 100ms;
+}
+
+.onscroll.results tr:nth-of-type(5) {
+  animation-delay: 0ms;
 }
 
 .rotator {
@@ -331,6 +473,10 @@ li {
 
 .run_animation {
   animation-play-state: running;
+}
+
+#scroller {
+  height: 150vh; /* (count of li in #main-list) * 100 - 50 */
 }
 
 .subtitle {
@@ -351,23 +497,23 @@ td:first-of-type {
   padding-right: 30px;
 }
 
-.total_measure {
+.total-measure {
   font-size: 0.5em;
   margin: 0 0 30px;
 }
 
-.total_measure_description {
+.total-measure_description {
   animation-duration: 1125ms;
   animation-iteration-count: 3;
-  animation-name: total_measure_description;
+  animation-name: total-measure_description;
   display: block;
   transform-origin: top right;
 }
 
-.total_measure_value {
+.total-measure_value {
   animation-duration: 1125ms;
   animation-iteration-count: 3;
-  animation-name: total_measure;
+  animation-name: total-measure;
   font-size: 1.5em;
   display: block;
   line-height: 1em;
@@ -413,7 +559,7 @@ video {
   background-image: radial-gradient(500px 800px at top right, maroon 50%, transparent);
   height: 100%;
   left: 0;
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100%;
 }

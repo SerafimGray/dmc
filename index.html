@@ -23,46 +23,97 @@
 </head>
 
 <body>
+  <div id="scroller"></div>
+
   <video autoplay loop muted poster="img/poster.jpg">
     <source src="video/background-3.mp4">
   </video>
   <div id="video_shadow"></div>
 
-  <img alt="translucent blot under the text" class="blot" id="background_blot" src="img/background_blot.png">
+  <img alt="translucent blot under the text" class="blot" id="background-blot" src="img/background_blot.png">
 
   <img alt="large blot under the text" class="blot" id="blot" src="img/blot.gif">
 
   <ul id="main-list">
-    <li>
+    <li id="visible">
       <div class="rotator">
         <h2>
           <span class="first-letter" data="P">P</span>
-          <span class="not_first-letter">erformant</span>
+          <span class="not_first-letter">erformant!</span>
         </h2>
+
         <p class="subtitle">ms</p>
       </div>
-      <p class="total_measure">
-        <span class="total_measure_value">1,062</span>
-        <span class="total_measure_description">load time</span>
+
+      <p class="total-measure">
+        <span class="total-measure_value">1,062</span>
+        <span class="total-measure_description">load time</span>
       </p>
 
-      <table>
+      <table class="results">
         <tr>
           <td>First Contentful Paint</td>
           <td>300</td>
         </tr>
+
         <tr>
           <td>Speed Index</td>
           <td>800</td>
         </tr>
+
         <tr>
           <td>Largest Contentful Paint</td>
           <td>1,100</td>
         </tr>
+
         <tr>
           <td>Time to Interactive</td>
           <td>400</td>
         </tr>
+
+        <tr>
+          <td>Total Blocking Time</td>
+          <td>50</td>
+        </tr>
+      </table>
+    </li>
+
+    <li>
+      <div class="rotator">
+        <h2>
+          <span class="first-letter" data="L">L</span>
+          <span class="not_first-letter">ightweight!</span>
+        </h2>
+
+        <p class="subtitle">kb</p>
+      </div>
+
+      <p class="total-measure">
+        <span class="total-measure_value">1,062</span>
+        <span class="total-measure_description">load time</span>
+      </p>
+
+      <table class="results">
+        <tr>
+          <td>First Contentful Paint</td>
+          <td>300</td>
+        </tr>
+
+        <tr>
+          <td>Speed Index</td>
+          <td>800</td>
+        </tr>
+
+        <tr>
+          <td>Largest Contentful Paint</td>
+          <td>1,100</td>
+        </tr>
+
+        <tr>
+          <td>Time to Interactive</td>
+          <td>400</td>
+        </tr>
+
         <tr>
           <td>Total Blocking Time</td>
           <td>50</td>
@@ -73,7 +124,7 @@
 
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>
   <script src="js/plugins.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/main.js" type="module"></script>
 
   <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
   <script>
