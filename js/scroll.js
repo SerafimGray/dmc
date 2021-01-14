@@ -13,6 +13,15 @@ function addClassToClasses(classList, screenNumber) {
     )
 }
 
+function manageHealth(counter, screenNumber) {
+    const healthpoint = document.getElementsByClassName('healthpoint')
+    if (counter === 1) {
+        healthpoint[counter + screenNumber].classList.remove('hide')
+    } else {
+        healthpoint[screenNumber].classList.add('hide')
+    }
+}
+
 function onscroll(wait) {
     setVideoSpeed(0, 0, 1, 1000)
     const idList = ['background-blot', 'blot']
@@ -27,6 +36,7 @@ function onscroll(wait) {
     window.setTimeout(function () {
         setVideoSpeed()
         const counter = scrollToDirection(screenNumber)
+        manageHealth(counter, screenNumber)
         switchVisible(counter, listItemsCollection, screenNumber)
         removeScrollClassFromIDs(idList)
         removeScrollClassFromClasses(classList, screenNumber)
@@ -50,7 +60,7 @@ function scrollToDirection(screenNumber) {
     const screenHeight = document.documentElement.clientHeight
     const previousPosition = screenHeight * screenNumber
     let counter = 1
-    if (window.pageYOffset > previousPosition) {
+    if (window.pageYOffset >= previousPosition) {
         window.scrollTo(0, previousPosition + screenHeight)
     } else {
         window.scrollTo(0, previousPosition - screenHeight)
