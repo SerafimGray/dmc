@@ -1,7 +1,7 @@
 {
   "short_name": "DmC",
   "name": "DmC demo website",
-  "display": "fullscreen",
+  "display": "standalone",
   "icons": [
     {
       "src": "\/android-icon-36x36.png",
@@ -40,7 +40,7 @@
       "density": "4.0"
     }
   ],
-  "start_url": "\/home",
+  "start_url": "\/home\/dmc",
   "background_color": "#fafafa",
   "theme_color": "#fafafa"
 }
