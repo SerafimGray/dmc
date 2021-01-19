@@ -5,5 +5,5 @@ window.onload = prepareToAction
 window.onbeforeunload = function () {
     window.scrollTo(0, 0);
 }
-window.addEventListener('scroll', throttle(onscroll, 1000));
+window.addEventListener('scroll', throttle(onscroll, 1500));
 

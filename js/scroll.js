@@ -32,6 +32,7 @@ function onscroll(wait) {
         .getElementsByTagName('li')
     const listItems = Array.from(listItemsCollection)
     const screenNumber = listItems.findIndex(listItem => listItem.id === "visible")
+
     addClassToClasses(classList, screenNumber)
     window.setTimeout(function () {
         setVideoSpeed()
@@ -40,7 +41,7 @@ function onscroll(wait) {
         switchVisible(counter, listItemsCollection, screenNumber)
         removeScrollClassFromIDs(idList)
         removeScrollClassFromClasses(classList, screenNumber)
-    }, wait - 50)
+    }, wait - 500)
 }
 
 function removeScrollClassFromClasses(classList, screenNumber) {

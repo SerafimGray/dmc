@@ -87,6 +87,10 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+:root {
+  --screenCount: 3
+}
+
 /* =============================== Animations =============================== */
 
 @keyframes background-blot {
@@ -376,9 +380,11 @@ body {
   background-repeat: no-repeat;
   bottom: 20px;
   box-sizing: border-box;
+  display: flex;
   height: 94px;
+  justify-content: space-between;
   left: 20px;
-  padding: 56px 10px 24px 59px;
+  padding: 59px 5px 21px 59px;
   position: fixed;
   width: 356px;
 }
@@ -387,9 +393,9 @@ body {
   animation-duration: 500ms;
   animation-name: healthpoint;
   background-color: white;
-  display: inline-block;
+  flex-grow: 1;
   height: 100%;
-  width: calc(50% - 2px);
+  margin-right: 2px;
 }
 
 .hide {
@@ -524,7 +530,7 @@ li {
 }
 
 #scroller {
-  height: 150vh; /* (count of li in #main-list) * 100 - 50 */
+  height: calc(var(--screenCount) * 100vh - 50vh); 
 }
 
 .subtitle {
@@ -610,7 +616,7 @@ video {
 #video_shadow {
   background-image: 
     radial-gradient(500px 800px at top right, maroon 50%, transparent),
-    radial-gradient(700px 200px at bottom left, maroon 50%, transparent);
+    radial-gradient(500px 150px at bottom left, maroon 50%, transparent);
   height: 100%;
   left: 0;
   position: fixed;

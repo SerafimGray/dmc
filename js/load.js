@@ -41,9 +41,8 @@ function startAction() {
 }
 
 function translatePlaybackRate(from, to, period, interval) {
-    //let t = +(from < to)
     let t = 0
-    const step = /*(-t * 2 + 1) * */interval / period
+    const step = interval / period
     const intervalID = window.setInterval(function () {
         const playbackRate = countPlaybackRate(from, to, t)
         setPlaybackRate(playbackRate)
