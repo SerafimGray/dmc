@@ -24,7 +24,7 @@ function manageHealth(counter, screenNumber) {
 
 function onscroll(wait) {
     setVideoSpeed(0, 0, 1, 1000)
-    const idList = ['background-blot', 'blot']
+    const idList = ['background-blot', 'blot', 'scroll-down']
     addClassToIDs(idList)
     const classList = ['not_first-letter', 'first-letter', 'subtitle', 'total-measure_value', 'total-measure_description', 'results']
     const listItemsCollection = document
@@ -32,14 +32,13 @@ function onscroll(wait) {
         .getElementsByTagName('li')
     const listItems = Array.from(listItemsCollection)
     const screenNumber = listItems.findIndex(listItem => listItem.id === "visible")
-
     addClassToClasses(classList, screenNumber)
     window.setTimeout(function () {
         setVideoSpeed()
         const counter = scrollToDirection(screenNumber)
         manageHealth(counter, screenNumber)
         switchVisible(counter, listItemsCollection, screenNumber)
-        removeScrollClassFromIDs(idList)
+        removeScrollClassFromIDs(idList.slice(0, -1))
         removeScrollClassFromClasses(classList, screenNumber)
     }, wait - 500)
 }
@@ -76,9 +75,9 @@ function switchVisible(counter, listItemsCollection, screenNumber) {
 }
 
 function throttle(fn, wait) {
-    let time = Date.now();
+    let time = 0;
     return function () {
-        if (time + wait - Date.now() < 0) {
+        if (Date.now() > time + wait) {
             fn(wait);
             time = Date.now();
         }
