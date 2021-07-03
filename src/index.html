@@ -1,0 +1,205 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>DmC demo website</title>
+  <meta name="description" content="DmC: Devil May Cry videogame demo website">
+  <meta name="viewport" content="width=device-width, initial-scale=0.6">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <meta name="theme-color" content="#fafafa">
+
+  <style>
+    @font-face {
+      font-display: swap;
+      font-family: 'New Press Eroded';
+      src: url("<%= require('./fonts/new_press_eroded.ttf').default %>") format("truetype");
+    }
+
+    #healthbar {
+      background-image: url("<%= require('./img/healthbar.webp').default %>");
+    }
+  </style>
+</head>
+
+<body>
+  <div id="scroller"></div>
+
+  <video autoplay id="background-video" loop muted playsinline poster="<%= require('./img/poster.jpg').default %>"
+    preload="auto">
+    <source src="<%= require('./video/background.mp4').default %>">
+  </video>
+  <div id="video-shadow"></div>
+
+  <div id="scroll-down_wrapper">
+    <p class="forwards inherit" id="scroll-down">
+      SCROLL DOWN, DANTE
+    </p>
+  </div>
+
+  <div id="healthbar">
+    <div class="healthpoint inherit forwards"></div>
+    <div class="healthpoint hide inherit"></div>
+    <div class="healthpoint hide inherit"></div>
+  </div>
+
+  <img alt="translucent blot under the text" class="fixed inherit forwards no-delay no-opacity" height="227"
+    id="background-blot" loading="lazy" src="<%= require('./img/background_blot.png').default %>" width="250">
+
+  <img alt="large blot under the text" class="fixed inherit forwards no-delay no-opacity short" height="398" id="blot"
+    src="<%= require('./img/blot.gif').default %>" width="700">
+
+  <ul class="inherit" id="main-list">
+    <li id="visible">
+      <div class="list-item-header inherit">
+        <h2 class="inherit list-title">
+          <span class="fade-away first-letter forwards inherit medium-delay short" data="P">P</span>
+          <span class="forwards inherit no-delay not_first-letter no-opacity short">erformant!</span>
+        </h2>
+
+        <p class="fade-away forwards inherit no-delay no-opacity opacity subtitle">ms</p>
+      </div>
+
+      <p class="inherit total-measure">
+        <span
+          class="fade-away forwards inherit long-delay medium-delay no-opacity opacity short total-measure_value">1,062</span>
+        <span
+          class="fade-away forwards inherit long-delay no-delay no-opacity opacity short total-measure_description">load
+          time</span>
+      </p>
+
+      <table class="inherit results">
+        <tr class="forwards inherit no-opacity opacity">
+          <td>First Contentful Paint</td>
+          <td>300</td>
+        </tr>
+
+        <tr class="forwards inherit no-opacity opacity">
+          <td>Speed Index</td>
+          <td>800</td>
+        </tr>
+
+        <tr class="forwards inherit no-opacity opacity">
+          <td>Largest Contentful Paint</td>
+          <td>1,100</td>
+        </tr>
+
+        <tr class="forwards inherit no-opacity opacity">
+          <td>Time to Interactive</td>
+          <td>400</td>
+        </tr>
+
+        <tr class="forwards inherit no-opacity opacity">
+          <td>Total Blocking Time</td>
+          <td>50</td>
+        </tr>
+      </table>
+    </li>
+
+    <li>
+      <div class="list-item-header inherit">
+        <h2 class="inherit list-title">
+          <span class="fade-away first-letter forwards inherit medium-delay short" data="L">L</span>
+          <span class="forwards inherit no-delay not_first-letter no-opacity short">ightweight!</span>
+        </h2>
+
+        <p class="fade-away forwards inherit no-delay no-opacity opacity subtitle">kb</p>
+      </div>
+
+      <p class="inherit total-measure">
+        <span
+          class="fade-away forwards inherit long-delay medium-delay no-opacity opacity short total-measure_value">4,497</span>
+        <span
+          class="fade-away forwards inherit long-delay no-delay no-opacity opacity short total-measure_description">total
+          size</span>
+      </p>
+
+      <table class="inherit results">
+        <tr class="forwards inherit no-opacity opacity">
+          <td>Styles</td>
+          <td>21</td>
+        </tr>
+
+        <tr class="forwards inherit no-opacity opacity">
+          <td>Font</td>
+          <td>625</td>
+        </tr>
+
+        <tr class="forwards inherit no-opacity opacity">
+          <td>Images</td>
+          <td>36</td>
+        </tr>
+
+        <tr class="forwards inherit no-opacity opacity">
+          <td>Scripts</td>
+          <td>14</td>
+        </tr>
+
+        <tr class="forwards inherit no-opacity opacity">
+          <td>Video</td>
+          <td>3,674</td>
+        </tr>
+      </table>
+    </li>
+
+    <li>
+      <div class="list-item-header inherit">
+        <h2 class="inherit list-title">
+          <span class="fade-away first-letter forwards inherit medium-delay short" data="O">O</span>
+          <span class="forwards inherit no-delay not_first-letter no-opacity short">ptimized!</span>
+        </h2>
+
+        <p class="fade-away forwards inherit no-delay no-opacity opacity subtitle">%</p>
+      </div>
+
+      <p class="inherit total-measure">
+        <span
+          class="fade-away forwards inherit long-delay medium-delay no-opacity opacity short total-measure_value">99</span>
+        <span
+          class="fade-away forwards inherit long-delay no-delay no-opacity opacity short total-measure_description">lighthouse
+          test</span>
+      </p>
+
+      <table class="inherit results">
+        <tr class="forwards inherit no-opacity opacity">
+          <td>Perfomance</td>
+          <td>95</td>
+        </tr>
+
+        <tr class="forwards inherit no-opacity opacity">
+          <td>Best practices</td>
+          <td>100</td>
+        </tr>
+
+        <tr class="forwards inherit no-opacity opacity">
+          <td>Accessibility</td>
+          <td>100</td>
+        </tr>
+
+        <tr class="forwards inherit no-opacity opacity">
+          <td>SEO</td>
+          <td>100</td>
+        </tr>
+      </table>
+    </li>
+  </ul>
+
+  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. 
+  <script>
+    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
+  </script>
+  <script src="https://www.google-analytics.com/analytics.js" async></script> -->
+</body>
+
+</html>
