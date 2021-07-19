@@ -1,6 +1,6 @@
 import { setVideoSpeed } from './load.js'
 
-function throttle(fn, wait) {
+export function throttle(fn, wait) {
     let time = 0
     return function () {
         if (Date.now() > time + wait) {
